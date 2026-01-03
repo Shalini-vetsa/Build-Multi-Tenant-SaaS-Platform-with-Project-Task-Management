@@ -32,10 +32,11 @@ backend/
 │ ├── services/
 │ ├── utils/
 │ ├── config/
+│ ├── scripts/
 │ ├── app.js
 │ └── server.js
 ├── migrations/
-├── tests/
+└── .env
 ├── Dockerfile
 └── package.json
 ```
@@ -78,16 +79,16 @@ frontend/
 ├── src/
 │ ├── components/
 │ ├── pages/
-│ ├── routes/
-│ ├── services/
-│ ├── context/
-│ ├── hooks/
-│ ├── styles/
+│ ├── api/
+│ ├── auth/
+│ ├── utils/
 │ ├── App.jsx
 │ └── main.jsx
-├── public/
+│ └── styles.css
+├── .env
 ├── Dockerfile
 └── package.json
+└── vite.config.js
 ```
 
 **Folder Descriptions:**
@@ -136,16 +137,17 @@ All environment variables are defined using a `.env` file or directly inside `do
 **Backend Environment Variables:**
 
 ```
+NODE_ENV=development
 PORT=5000
-DATABASE_URL=postgres://postgres:password@database:5432/saas_db
-JWT_SECRET=dev_secret_key
-JWT_EXPIRY=24h
+DATABASE_URL=postgres://postgres:postgres@database:5432/saas_db
+JWT_SECRET=supersecretjwtkey
+JWT_EXPIRES_IN=24h
 ```
 
 **Frontend Environment Variables:**
 
 ```
-VITE_API_BASE_URL=http://backend:5000
+VITE_API_URL=http://localhost:5000/api
 ```
 
 ---
@@ -154,7 +156,7 @@ VITE_API_BASE_URL=http://backend:5000
 
 1. Clone the repository:
 ```
-git clone https://github.com/SRINIJA-PULLIPUDI/Multi-Tenant-SaaS-Platform-with-Project-and-Task-Management-System.git
+git clone https://github.com/Shalini-vetsa/Build-Multi-Tenant-SaaS-Platform-with-Project-Task-Management.git
 ```
 
 2. Navigate to the project root:
@@ -178,19 +180,3 @@ Once Docker containers are running:
 - Health Check Endpoint: http://localhost:5000/api/health
 
 Database migrations and seed data are automatically executed on container startup.
-
----
-
-### 2.5 Running Tests
-
-**Backend Tests:**
-
-1. Navigate to backend directory:
-```
-cd backend
-```
-
-2. Run tests:
-```
-npm test
-```
