@@ -9,6 +9,7 @@
       "password": "demo123",
       "role": "super_admin"
     },
+    
     "tenant_admins": [
       {
         "tenant_name": "Demo Company",
